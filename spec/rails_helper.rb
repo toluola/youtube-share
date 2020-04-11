@@ -7,7 +7,7 @@ require "spec_helper"
 require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 require "database_cleaner"
-require "support/request_spec_helper"
+# require "support/request_spec_helper"
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -39,8 +39,8 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # config.include RequestSpecHelper, type: :request
-  config.include RequestSpecHelper
-  config.include ControllerSpecHelper
+  # config.include RequestSpecHelper
+  # config.include ControllerSpecHelper
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

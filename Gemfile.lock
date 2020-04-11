@@ -99,6 +99,7 @@ GEM
     nokogiri (1.10.9-x86-mingw32)
       mini_portile2 (~> 2.4.0)
     pg (1.2.3-x86-mingw32)
+    public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -176,6 +177,9 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.3)
       tzinfo (>= 1.0.0)
+    validate_url (1.0.8)
+      activemodel (>= 3.0.0)
+      public_suffix
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -203,6 +207,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
+  validate_url
 
 RUBY VERSION
    ruby 2.6.6p146

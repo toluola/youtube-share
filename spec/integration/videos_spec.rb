@@ -37,4 +37,16 @@ RSpec.describe "Videos API", type: :request do
       end
     end
   end
+
+  describe "GET /products" do
+    before { get "/share", params: {}, headers: headers }
+    it "returns product" do
+      expect(json).not_to be_empty
+      expect(json.size).to eq(2)
+    end
+
+    it "returns status code 200" do
+      expect(response).to have_http_status(200)
+    end
+  end
 end

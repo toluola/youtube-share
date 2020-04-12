@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+    skip_before_action :authorize_user, only: :index
     include Response
     include ExceptionHandler
 
@@ -7,6 +8,10 @@ class VideosController < ApplicationController
         json_response(@share_video, "Video shared successfully", :created)
     end
 
+    def index
+        @videos = Video.all
+        json_response(@videos, "Videos Fetched Successfully") 
+    end
     private
 
     def permit_params

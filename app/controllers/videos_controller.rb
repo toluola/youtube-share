@@ -3,7 +3,7 @@ class VideosController < ApplicationController
     include Response
     include ExceptionHandler
 
-    def create
+    def create 
         @share_video = current_user.videos.create!(permit_params)
         json_response(@share_video, "Video shared successfully", :created)
     end
@@ -12,9 +12,23 @@ class VideosController < ApplicationController
         @videos = Video.all
         json_response(@videos, "Videos Fetched Successfully") 
     end
+    
     private
 
+    def get_youtube_id(url)
+        id = ''
+        url = url.gsub(/(>|<)/i, "").split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
+        if url[2] != nil
+          id = url[2].split(/[^0-9a-z_\-]/i)
+          id = id[0];
+        else
+          id = url;
+        end
+        {"link" => id }
+      end
+
     def permit_params
-        params.permit(:link)
+        @params = params.permit(:link)
+        get_youtube_id(@params[:link])
     end
 end

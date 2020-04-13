@@ -6,9 +6,8 @@ class UsersController < ApplicationController
     def create
       create_user = User.create!(username: accept_params[:username],
                                       password: accept_params[:password])
-      json_response(create_user.slice(:id, :username, :created_at, :updated_at),
-                    "User created successfully",
-                    :created)
+      create_token = JsonWebToken.encode(user_id: create_user.id)
+      json_response({ token: create_token }, "User created successfully", :created)
     end
   
     private

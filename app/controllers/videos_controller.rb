@@ -9,10 +9,18 @@ class VideosController < ApplicationController
     end
 
     def index
-        @videos = Video.all
-        json_response(@videos, "Videos Fetched Successfully") 
+        @video_res = []
+        @videos = Video.includes(:user)
+        @videos.each do |data| 
+            @video_res << {
+                id: data.id,
+                youtubeId: data.link,
+                owner: data.user.username
+            }
+        end
+        json_response(@video_res, "Videos Fetched Successfully") 
     end
-    
+
     private
 
     def get_youtube_id(url)

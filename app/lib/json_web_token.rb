@@ -4,7 +4,7 @@ class JsonWebToken
   HMAC_SECRET = Rails.application.secrets.secret_key_base
 
   def self.encode(payload)
-    puts payload
+    puts HMAC_SECRET
     JWT.encode(payload, HMAC_SECRET)
   end
 

@@ -10,7 +10,7 @@ class VideosController < ApplicationController
 
     def index
         @video_res = []
-        @videos = Video.includes(:user)
+        @videos = Video.includes(:user).order('created_at DESC')
         @videos.each do |data| 
             @video_res << {
                 id: data.id,

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class JsonWebToken
-  HMAC_SECRET = Rails.application.secrets.secret_key_base
+  HMAC_SECRET = Rails.application.secrets.SECRET_KEY_BASE
 
   def self.encode(payload)
     puts HMAC_SECRET

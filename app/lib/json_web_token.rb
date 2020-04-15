@@ -7,9 +7,7 @@ class JsonWebToken
     end
   
     def self.decode(token)
-      puts token
       body = JWT.decode(token, "this is cool")[0]
-      puts body
       HashWithIndifferentAccess.new body
     rescue JWT::DecodeError => e
       raise ExceptionHandler::InvalidToken, e.message

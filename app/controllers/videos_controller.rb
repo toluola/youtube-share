@@ -9,16 +9,8 @@ class VideosController < ApplicationController
     end
 
     def index
-        @video_res = []
         @videos = Video.includes(:user).order('created_at DESC')
-        @videos.each do |data| 
-            @video_res << {
-                id: data.id,
-                youtubeId: data.link,
-                owner: data.user.username
-            }
-        end
-        json_response(@video_res, "Videos Fetched Successfully") 
+        json_response(@videos, "Videos Fetched Successfully") 
     end
 
     private
